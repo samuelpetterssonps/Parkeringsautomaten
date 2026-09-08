@@ -31,8 +31,8 @@ class Program
         while (true)
         {
             Console.WriteLine("Hur många minuter vill du parkera här?");
-            int tid;
-            var res = int.TryParse(Console.ReadLine(), out tid);
+            int time;
+            var res = int.TryParse(Console.ReadLine(), out time);
 
             if (!res)
             {
@@ -46,11 +46,11 @@ class Program
             }
                 
             Console.WriteLine("Och vilken veckodag är det?");
-            var veckodag = Console.ReadLine().ToLower();
+            var day = Console.ReadLine().ToLower();
 
-            var kostnad = CalculateCost(tid, veckodag);
+            var cost = CalculateCost(time, day);
 
-            Console.WriteLine($"Kostnad: {kostnad}\n");
+            Console.WriteLine($"Kostnad: {cost}\n");
         }
     }
 }
