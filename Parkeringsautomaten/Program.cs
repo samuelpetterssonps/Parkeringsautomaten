@@ -2,11 +2,11 @@
 
 class Program
 {
-    private static int CalculateCost(int time, string day)
+    private static int CalculateCost(int duration, string day)
     {
         float cost = 0;
 
-        cost = MathF.Ceiling(((float)time - 15) / 10) * 5;
+        cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
 
         if (day == "lördag" || day == "söndag")
         {
@@ -31,7 +31,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Hur många minuter vill du parkera här?");
-            var res = int.TryParse(Console.ReadLine(), out var time);
+            var res = int.TryParse(Console.ReadLine(), out var duration);
 
             if (!res)
             {
@@ -47,7 +47,7 @@ class Program
             Console.WriteLine("Och vilken veckodag är det?");
             var day = Console.ReadLine().ToLower();
 
-            var cost = CalculateCost(time, day);
+            var cost = CalculateCost(duration, day);
 
             Console.WriteLine($"Kostnad: {cost}\n");
         }
