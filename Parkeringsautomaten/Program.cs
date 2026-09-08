@@ -31,8 +31,7 @@ class Program
         while (true)
         {
             Console.WriteLine("Hur många minuter vill du parkera här?");
-            int time;
-            var res = int.TryParse(Console.ReadLine(), out time);
+            var res = int.TryParse(Console.ReadLine(), out var time);
 
             if (!res)
             {
