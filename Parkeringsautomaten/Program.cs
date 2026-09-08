@@ -32,7 +32,18 @@ class Program
         {
             Console.WriteLine("Hur många minuter vill du parkera här?");
             int tid;
-            int.TryParse(Console.ReadLine(), out tid);
+            var res = int.TryParse(Console.ReadLine(), out tid);
+
+            if (!res)
+            {
+                var defaultColor = Console.ForegroundColor;
+                
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vänligen ange ett giltigt nummer!");
+                Console.ForegroundColor = defaultColor;
+                
+                continue;
+            }
                 
             Console.WriteLine("Och vilken veckodag är det?");
             var veckodag = Console.ReadLine().ToLower();
