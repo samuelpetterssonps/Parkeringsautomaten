@@ -1,8 +1,8 @@
 ﻿namespace Parkeringsautomaten;
 
-class Program
+public static class Program
 {
-    private static int CalculateCost(int duration, string day)
+    public static int CalculateCost(int duration, string day)
     {
         var cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
         
