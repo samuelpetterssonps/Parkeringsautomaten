@@ -24,7 +24,7 @@ class Program
         return (int)cost;
     }
     
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Console.Clear();
         
@@ -45,7 +45,18 @@ class Program
             }
                 
             Console.WriteLine("Och vilken veckodag är det?");
-            var day = Console.ReadLine().ToLower();
+            var day = Console.ReadLine()!.ToLower();
+
+            if (day == "")
+            {
+                var defaultColor = Console.ForegroundColor;
+                
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vänligen ange en giltig veckodag!");
+                Console.ForegroundColor = defaultColor;
+                
+                continue;
+            }
 
             var cost = CalculateCost(duration, day);
 
