@@ -2,11 +2,22 @@
 
 public static class Program
 {
-    public static int CalculateCost(int duration, string day)
+    public enum Day
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday,
+    }
+    
+    public static int CalculateCost(int duration, Day day)
     {
         var cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
         
-        if (day is "lördag" or "söndag")
+        if (day is Day.Saturday or Day.Sunday)
         {
             cost /= 2;
         }
@@ -20,6 +31,21 @@ public static class Program
         }
         
         return (int)cost;
+    }
+
+    private static Day StringToDay(string str)
+    {
+        switch (str.ToLower())
+        {
+            case "måndag" or "monday": return Day.Monday;
+            case "tisdag" or "tuesday": return Day.Tuesday;
+            case "onsdag" or "wednesday": return Day.Wednesday;
+            case "torsdag" or "thursday": return Day.Thursday;
+            case "fredag" or "friday": return Day.Friday;
+            case "lördag" or "saturday": return Day.Saturday;
+            case "söndag" or "sunday": return Day.Sunday;
+            default: return Day.Monday;
+        }
     }
     
     private static void Main(string[] args)
@@ -43,19 +69,8 @@ public static class Program
             }
                 
             Console.WriteLine("Och vilken veckodag är det?");
-            var day = Console.ReadLine()!.ToLower();
-
-            if (day == "")
-            {
-                var defaultColor = Console.ForegroundColor;
-                
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Vänligen ange en giltig veckodag!");
-                Console.ForegroundColor = defaultColor;
-                
-                continue;
-            }
-
+            var day = StringToDay(Console.ReadLine()!);
+            
             var cost = CalculateCost(duration, day);
 
             Console.WriteLine($"Kostnad: {cost}\n");
