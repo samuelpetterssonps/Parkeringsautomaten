@@ -4,10 +4,8 @@ class Program
 {
     private static int CalculateCost(int duration, string day)
     {
-        float cost = 0;
-
-        cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
-
+        var cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
+        
         if (day is "lördag" or "söndag")
         {
             cost /= 2;
