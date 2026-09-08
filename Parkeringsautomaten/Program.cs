@@ -35,9 +35,9 @@ class Program
             int.TryParse(Console.ReadLine(), out tid);
                 
             Console.WriteLine("Och vilken veckodag är det?");
-            string veckodag = Console.ReadLine().ToLower();
+            var veckodag = Console.ReadLine().ToLower();
 
-            int kostnad = CalculateCost(tid, veckodag);
+            var kostnad = CalculateCost(tid, veckodag);
 
             Console.WriteLine($"Kostnad: {kostnad}\n");
         }
