@@ -65,7 +65,7 @@ public static class Program
                 Console.WriteLine("Vänligen ange ett giltigt nummer!");
                 Console.ForegroundColor = defaultColor;
                 
-                continue;
+                break;
             }
                 
             Console.WriteLine("Och vilken veckodag är det?");
