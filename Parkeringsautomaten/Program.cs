@@ -8,7 +8,7 @@ class Program
 
         cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
 
-        if (day == "lördag" || day == "söndag")
+        if (day is "lördag" or "söndag")
         {
             cost /= 2;
         }
