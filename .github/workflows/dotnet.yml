@@ -26,5 +26,10 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Upload artifact
-      uses: actions/upload-artifact@v7
+    - run: |
+        gh release create v1.2.3 Parkeringsautomaten/bin/debug/net10.0/Parkeringsautomaten.dll
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
+      name: Upload release
+
