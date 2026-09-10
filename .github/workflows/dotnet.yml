@@ -30,7 +30,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - run: |
-        ls -ARl
+        ls -ARl Parkeringsautomaten
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
