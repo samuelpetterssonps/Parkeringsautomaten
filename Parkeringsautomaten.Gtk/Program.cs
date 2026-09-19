@@ -1,8 +1,7 @@
 ﻿var application = Adw.Application.New("io.github.samuelpetterssonps.parkeringsautomaten", Gio.ApplicationFlags.FlagsNone);
 application.OnActivate += (sender, args) =>
 {
-    var container = Gtk.Box.New(Gtk.Orientation.Vertical, 20);
-
+    // Duration
     var durationBox = Gtk.Box.New(Gtk.Orientation.Vertical, 4);
     var durationLabel = Gtk.Label.New("Hur lång tid?");
     var durationAdjustment = Gtk.Adjustment.New(0, 0, 60, 1, 5, 0);
@@ -11,6 +10,7 @@ application.OnActivate += (sender, args) =>
     durationBox.Append(durationLabel);
     durationBox.Append(durationEntry);
     
+    // Day of Week
     var dayOfWeekBox = Gtk.Box.New(Gtk.Orientation.Vertical, 4);
     var dayOfWeekLabel = Gtk.Label.New("Vad för veckodag?");
     var mondayRadio = Gtk.CheckButton.NewWithLabel("Måndag");
@@ -36,13 +36,17 @@ application.OnActivate += (sender, args) =>
     dayOfWeekBox.Append(fridayRadio);
     dayOfWeekBox.Append(saturdayRadio);
     dayOfWeekBox.Append(sundayRadio);
-
+    
+    // Calculate button
     var calculateButton = Gtk.Button.NewWithLabel("Räkna ut");
 
+    // Root container
+    var container = Gtk.Box.New(Gtk.Orientation.Vertical, 20);
     container.Append(durationBox);
     container.Append(dayOfWeekBox);
     container.Append(calculateButton);
     
+    // Window
     var window = Gtk.ApplicationWindow.New((Adw.Application) sender);
     window.Title = "Parkeringsautomaten";
     window.SetDefaultSize(300, 500);
