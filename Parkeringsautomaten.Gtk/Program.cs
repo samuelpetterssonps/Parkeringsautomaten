@@ -40,6 +40,7 @@ application.OnActivate += (sender, args) =>
     
     // Calculate button
     var calculateButton = Gtk.Button.NewWithLabel("Räkna ut");
+    calculateButton.GetStyleContext().AddClass("suggested-action");
 
     // Root container
     var container = Gtk.Box.New(Gtk.Orientation.Vertical, 20);
