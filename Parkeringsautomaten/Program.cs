@@ -2,22 +2,11 @@
 
 public static class Program
 {
-    public enum Day
-    {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday,
-    }
-    
-    public static int CalculateCost(int duration, Day day)
+    public static int CalculateCost(int duration, DayOfWeek day)
     {
         var cost = MathF.Ceiling(((float)duration - 15) / 10) * 5;
         
-        if (day is Day.Saturday or Day.Sunday)
+        if (day is DayOfWeek.Saturday or DayOfWeek.Sunday)
         {
             cost /= 2;
         }
@@ -33,18 +22,18 @@ public static class Program
         return (int)cost;
     }
 
-    private static Day StringToDay(string str)
+    private static DayOfWeek StringToDay(string str)
     {
         switch (str.ToLower())
         {
-            case "måndag" or "monday": return Day.Monday;
-            case "tisdag" or "tuesday": return Day.Tuesday;
-            case "onsdag" or "wednesday": return Day.Wednesday;
-            case "torsdag" or "thursday": return Day.Thursday;
-            case "fredag" or "friday": return Day.Friday;
-            case "lördag" or "saturday": return Day.Saturday;
-            case "söndag" or "sunday": return Day.Sunday;
-            default: return Day.Monday;
+            case "måndag" or "monday": return DayOfWeek.Monday;
+            case "tisdag" or "tuesday": return DayOfWeek.Tuesday;
+            case "onsdag" or "wednesday": return DayOfWeek.Wednesday;
+            case "torsdag" or "thursday": return DayOfWeek.Thursday;
+            case "fredag" or "friday": return DayOfWeek.Friday;
+            case "lördag" or "saturday": return DayOfWeek.Saturday;
+            case "söndag" or "sunday": return DayOfWeek.Sunday;
+            default: return DayOfWeek.Monday;
         }
     }
     
