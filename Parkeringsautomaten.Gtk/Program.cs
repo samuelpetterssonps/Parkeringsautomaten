@@ -42,6 +42,11 @@ application.OnActivate += (sender, args) =>
 
     // Root container
     var container = Gtk.Box.New(Gtk.Orientation.Vertical, 20);
+    container.SetMarginStart(10);
+    container.SetMarginTop(10);
+    container.SetMarginEnd(10);
+    container.SetMarginBottom(10);
+    container.SetMarginBottom(10);
     container.Append(durationBox);
     container.Append(dayOfWeekBox);
     container.Append(calculateButton);
