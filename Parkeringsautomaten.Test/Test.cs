@@ -1,6 +1,6 @@
 ﻿using Parkeringsautomaten;
 
-namespace Test;
+namespace Parkeringsautomaten.Test;
 
 [TestClass]
 public sealed class Test
