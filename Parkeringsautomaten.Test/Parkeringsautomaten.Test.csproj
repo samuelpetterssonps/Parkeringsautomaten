@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Parkeringsautomaten\Parkeringsautomaten.csproj" />
+      <ProjectReference Include="..\Parkeringsautomaten.Cli\Parkeringsautomaten.Cli.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿using Parkeringsautomaten;
-
-namespace Parkeringsautomaten.Test;
+﻿namespace Parkeringsautomaten.Test;
 
 [TestClass]
 public sealed class Test
@@ -8,7 +6,7 @@ public sealed class Test
     [TestMethod]
     public void TestMethod1()
     {
-        var result = Program.CalculateCost(12, DayOfWeek.Monday);
+        var result = Lib.Cost.Calculate(12, DayOfWeek.Monday);
         var expected = 0;
         Assert.AreEqual(expected, result);
     }
@@ -16,7 +14,7 @@ public sealed class Test
     [TestMethod]
     public void TestMethod2()
     {
-        var result = Program.CalculateCost(20, DayOfWeek.Tuesday);
+        var result = Lib.Cost.Calculate(20, DayOfWeek.Tuesday);
         var expected = 5;
         Assert.AreEqual(expected, result);
     }
@@ -24,7 +22,7 @@ public sealed class Test
     [TestMethod]
     public void TestMethod3()
     {
-        var result = Program.CalculateCost(35, DayOfWeek.Wednesday);
+        var result = Lib.Cost.Calculate(35, DayOfWeek.Wednesday);
         var expected = 10;
         Assert.AreEqual(expected, result);
     }
@@ -32,7 +30,7 @@ public sealed class Test
     [TestMethod]
     public void TestMethod4()
     {
-        var result = Program.CalculateCost(35, DayOfWeek.Saturday);
+        var result = Lib.Cost.Calculate(35, DayOfWeek.Saturday);
         var expected = 5;
         Assert.AreEqual(expected, result);
     }
@@ -40,7 +38,7 @@ public sealed class Test
     [TestMethod]
     public void TestMethod5()
     {
-        var result = Program.CalculateCost(1000, DayOfWeek.Sunday);
+        var result = Lib.Cost.Calculate(1000, DayOfWeek.Sunday);
         var expected = 150;
         Assert.AreEqual(expected, result);
     }
