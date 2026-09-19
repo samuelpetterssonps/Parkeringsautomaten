@@ -9,34 +9,15 @@ application.OnActivate += (sender, args) =>
     
     durationBox.Append(durationLabel);
     durationBox.Append(durationEntry);
+
+    
     
     // Day of Week
     var dayOfWeekBox = Gtk.Box.New(Gtk.Orientation.Vertical, 4);
-    var dayOfWeekLabel = Gtk.Label.New("Vad för veckodag?");
-    var mondayRadio = Gtk.CheckButton.NewWithLabel("Måndag");
-    var tuesdayRadio = Gtk.CheckButton.NewWithLabel("Tisdag");
-    var wednesdayRadio = Gtk.CheckButton.NewWithLabel("Onsdag");
-    var thursdayRadio = Gtk.CheckButton.NewWithLabel("Torsdag");
-    var fridayRadio = Gtk.CheckButton.NewWithLabel("Fredag");
-    var saturdayRadio = Gtk.CheckButton.NewWithLabel("Lördag");
-    var sundayRadio = Gtk.CheckButton.NewWithLabel("Söndag");
-
-    mondayRadio.Active = true;
-    tuesdayRadio.Group = mondayRadio;
-    wednesdayRadio.Group = mondayRadio;
-    thursdayRadio.Group = mondayRadio;
-    fridayRadio.Group = mondayRadio;
-    saturdayRadio.Group = mondayRadio;
-    sundayRadio.Group = mondayRadio;
+    var dayOfWeekStringList = Gtk.StringList.New(["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"]);
+    var dayOfWeekDropdown = Gtk.DropDown.New(dayOfWeekStringList, null);
     
-    dayOfWeekBox.Append(dayOfWeekLabel);
-    dayOfWeekBox.Append(mondayRadio);
-    dayOfWeekBox.Append(tuesdayRadio);
-    dayOfWeekBox.Append(wednesdayRadio);
-    dayOfWeekBox.Append(thursdayRadio);
-    dayOfWeekBox.Append(fridayRadio);
-    dayOfWeekBox.Append(saturdayRadio);
-    dayOfWeekBox.Append(sundayRadio);
+    dayOfWeekBox.Append(dayOfWeekDropdown);
     
     // Calculate button
     var calculateButton = Gtk.Button.NewWithLabel("Räkna ut");
@@ -59,30 +40,7 @@ application.OnActivate += (sender, args) =>
     
     calculateButton.OnClicked += (button, eventArgs) =>
     {
-        DayOfWeek day;
-        if (mondayRadio.Active)
-        {
-            day = DayOfWeek.Monday;
-        } else if (tuesdayRadio.Active)
-        {
-            day = DayOfWeek.Tuesday;
-        } else if (wednesdayRadio.Active)
-        {
-            day = DayOfWeek.Wednesday;
-        } else if (thursdayRadio.Active)
-        {
-            day = DayOfWeek.Thursday;
-        } else if (fridayRadio.Active)
-        {
-            day = DayOfWeek.Friday;
-        } else if (saturdayRadio.Active)
-        {
-            day = DayOfWeek.Saturday;
-        }
-        else
-        {
-            day = DayOfWeek.Sunday;
-        }
+        var day = Parkeringsautomaten.Lib.Parse.FromString(dayOfWeekStringList.GetString(dayOfWeekDropdown.Selected));
         
         var firstChild = resultBox.GetFirstChild();
         if (firstChild != null)

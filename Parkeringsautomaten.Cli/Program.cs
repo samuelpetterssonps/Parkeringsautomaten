@@ -2,21 +2,6 @@
 
 public static class Program
 {
-    private static DayOfWeek StringToDay(string str)
-    {
-        switch (str.ToLower())
-        {
-            case "måndag" or "monday": return DayOfWeek.Monday;
-            case "tisdag" or "tuesday": return DayOfWeek.Tuesday;
-            case "onsdag" or "wednesday": return DayOfWeek.Wednesday;
-            case "torsdag" or "thursday": return DayOfWeek.Thursday;
-            case "fredag" or "friday": return DayOfWeek.Friday;
-            case "lördag" or "saturday": return DayOfWeek.Saturday;
-            case "söndag" or "sunday": return DayOfWeek.Sunday;
-            default: return DayOfWeek.Monday;
-        }
-    }
-    
     private static void Main()
     {
         Console.Clear();
@@ -38,7 +23,7 @@ public static class Program
             }
                 
             Console.WriteLine("Och vilken veckodag är det?");
-            var day = StringToDay(Console.ReadLine()!);
+            var day = Lib.Parse.FromString(Console.ReadLine()!);
             
             var cost = Lib.Cost.Calculate(duration, day);
 
