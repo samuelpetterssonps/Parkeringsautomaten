@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Parkeringsautomaten.Cli\Parkeringsautomaten.Cli.csproj" />
+  <Project Path="Parkeringsautomaten.Gtk/Parkeringsautomaten.Gtk.csproj" />
   <Project Path="Parkeringsautomaten.Lib/Parkeringsautomaten.Lib.csproj" />
   <Project Path="Parkeringsautomaten.Test\Parkeringsautomaten.Test.csproj" />
 </Solution>
