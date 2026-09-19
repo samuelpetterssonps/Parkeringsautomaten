@@ -51,6 +51,25 @@ application.OnActivate += (sender, args) =>
     container.Append(dayOfWeekBox);
     container.Append(calculateButton);
     
+    // Result
+
+    var resultBox = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
+    
+    calculateButton.OnClicked += (button, eventArgs) =>
+    {
+        var firstChild = resultBox.GetFirstChild();
+        if (firstChild != null)
+        {
+            resultBox.Remove(firstChild);
+        }
+
+        var result = Parkeringsautomaten.Lib.Cost.Calculate((int)Math.Round(durationEntry.Value), DayOfWeek.Monday);
+        var resultLabel = Gtk.Label.New($"{result}");
+        resultBox.Append(resultLabel);
+    };
+    
+    container.Append(resultBox);
+    
     // Window
     var window = Gtk.ApplicationWindow.New((Adw.Application) sender);
     window.Title = "Parkeringsautomaten";

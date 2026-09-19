@@ -11,4 +11,8 @@
       <PackageReference Include="GirCore.Adw-1" Version="0.9.0-preview.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Parkeringsautomaten.Lib\Parkeringsautomaten.Lib.csproj" />
+    </ItemGroup>
+
 </Project>
