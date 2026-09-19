@@ -4,7 +4,7 @@ application.OnActivate += (sender, args) =>
     // Duration
     var durationBox = Gtk.Box.New(Gtk.Orientation.Vertical, 4);
     var durationLabel = Gtk.Label.New("Hur lång tid?");
-    var durationAdjustment = Gtk.Adjustment.New(0, 0, 60, 1, 5, 0);
+    var durationAdjustment = Gtk.Adjustment.New(0, 0, 525960, 1, 5, 0);
     var durationEntry = Gtk.SpinButton.New(durationAdjustment, 1, 0);
     
     durationBox.Append(durationLabel);
