@@ -21,6 +21,7 @@ application.OnActivate += (sender, args) =>
     var saturdayRadio = Gtk.CheckButton.NewWithLabel("Lördag");
     var sundayRadio = Gtk.CheckButton.NewWithLabel("Söndag");
 
+    mondayRadio.Active = true;
     tuesdayRadio.Group = mondayRadio;
     wednesdayRadio.Group = mondayRadio;
     thursdayRadio.Group = mondayRadio;
@@ -57,13 +58,38 @@ application.OnActivate += (sender, args) =>
     
     calculateButton.OnClicked += (button, eventArgs) =>
     {
+        DayOfWeek day;
+        if (mondayRadio.Active)
+        {
+            day = DayOfWeek.Monday;
+        } else if (tuesdayRadio.Active)
+        {
+            day = DayOfWeek.Tuesday;
+        } else if (wednesdayRadio.Active)
+        {
+            day = DayOfWeek.Wednesday;
+        } else if (thursdayRadio.Active)
+        {
+            day = DayOfWeek.Thursday;
+        } else if (fridayRadio.Active)
+        {
+            day = DayOfWeek.Friday;
+        } else if (saturdayRadio.Active)
+        {
+            day = DayOfWeek.Saturday;
+        }
+        else
+        {
+            day = DayOfWeek.Sunday;
+        }
+        
         var firstChild = resultBox.GetFirstChild();
         if (firstChild != null)
         {
             resultBox.Remove(firstChild);
         }
 
-        var result = Parkeringsautomaten.Lib.Cost.Calculate((int)Math.Round(durationEntry.Value), DayOfWeek.Monday);
+        var result = Parkeringsautomaten.Lib.Cost.Calculate((int)Math.Round(durationEntry.Value), day);
         var resultLabel = Gtk.Label.New($"{result}");
         resultBox.Append(resultLabel);
     };
