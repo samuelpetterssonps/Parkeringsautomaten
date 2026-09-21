@@ -1,5 +1,5 @@
 ﻿var application = Adw.Application.New("io.github.samuelpetterssonps.parkeringsautomaten", Gio.ApplicationFlags.FlagsNone);
-application.OnActivate += (sender, args) =>
+application.OnActivate += (sender, _) =>
 {
     // Duration
     var durationBox = Gtk.Box.New(Gtk.Orientation.Vertical, 4);
@@ -38,9 +38,9 @@ application.OnActivate += (sender, args) =>
 
     var resultBox = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
     
-    calculateButton.OnClicked += (button, eventArgs) =>
+    calculateButton.OnClicked += (_, _) =>
     {
-        var day = Parkeringsautomaten.Lib.Parse.FromString(dayOfWeekStringList.GetString(dayOfWeekDropdown.Selected));
+        var day = Parkeringsautomaten.Lib.Parse.FromString(dayOfWeekStringList.GetString(dayOfWeekDropdown.Selected) ?? "monday");
         
         var firstChild = resultBox.GetFirstChild();
         if (firstChild != null)
