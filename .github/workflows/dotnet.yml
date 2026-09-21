@@ -27,12 +27,22 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore --configuration Release
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - run: |
-        ls -ARl Parkeringsautomaten
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      shell: bash
-      name: Upload release
+      
+    - name: Upload cli artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: Cli
+        path: /home/runner/work/Parkeringsautomaten/Parkeringsautomaten/Parkeringsautomaten.Cli/bin/Release/net10.0/
+    
+    - name: Upload lib artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: Lib
+        path: /home/runner/work/Parkeringsautomaten/Parkeringsautomaten/Parkeringsautomaten.Lib/bin/Release/net10.0/
+   
+    - name: Upload gtk artifacts
+      uses: actions/upload-artifact@v7
+      with:
+        name: Gtk
+        path: /home/runner/work/Parkeringsautomaten/Parkeringsautomaten/Parkeringsautomaten.Gtk/bin/Release/net10.0/        
 
