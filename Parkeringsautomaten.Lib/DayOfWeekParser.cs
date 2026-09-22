@@ -1,6 +1,6 @@
 namespace Parkeringsautomaten.Lib;
 
-public static class Parse
+public static class DayOfWeekParser
 {
     public static DayOfWeek FromString(String str)
     {
