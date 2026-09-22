@@ -2,7 +2,7 @@ namespace Parkeringsautomaten.Lib;
 
 public static class DayOfWeekParser
 {
-    public static DayOfWeek FromString(String str)
+    public static DayOfWeek FromString(string str)
     {
         return str.ToLower() switch
         {
